@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="452.0" prefWidth="657.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TelaPrincipalController">
+   <children>
+      <HBox layoutX="152.0" prefHeight="50.0" prefWidth="657.0" style="-fx-background-color: #1E90FF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" text="CADASTRO DE PESSOAS">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets left="400.0" top="100.0" />
+               </opaqueInsets>
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+               <HBox.margin>
+                  <Insets left="200.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <Button fx:id="btnRealizaCadastro" alignment="TOP_LEFT" layoutX="247.0" layoutY="132.0" mnemonicParsing="false" onAction="#RealizaNovoCadastro" prefHeight="63.0" prefWidth="174.0" text="Cadastros" wrapText="true">
+         <graphic>
+            <ImageView fitHeight="75.0" fitWidth="82.0" opacity="0.78" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icones/cadastro.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <HBox layoutX="3.0" layoutY="402.0" prefHeight="50.0" prefWidth="657.0" style="-fx-background-color: #1E90FF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" text="TABAJARA TECNOLOGIES">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="180.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <Button fx:id="btnLogOff" layoutX="599.0" layoutY="50.0" mnemonicParsing="false" onAction="#Deslogar" text="LogOff">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icones/logoff.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>

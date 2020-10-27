@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Agenda de Contatos.jnlp">
+  <information>
+    <title>Agenda de Contatos</title>
+    <vendor>alexs</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  <shortcut><desktop/></shortcut>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="Agenda_de_Contatos.jar" size="215478" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.49.jar" size="1006904" download="eager" />
+    <jar href="lib\rs2xml.jar" size="171578" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="800" height="600" main-class="CadastroPessoa.Main"  name="Agenda de Contatos" />
+  <update check="always"/>
+</jnlp>
