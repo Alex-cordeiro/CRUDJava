@@ -17,7 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import Database.ModuloConexao;
+import Database.ConnectionModule;
 import java.sql.*;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TextField;
@@ -28,7 +28,7 @@ import javafx.scene.text.*;
 /**
  * FXML Controller class
  *
- * @author alexs
+ * @author Luzia de Souza 
  */
 public class TelaPrincipalController implements Initializable {
     
@@ -67,7 +67,7 @@ public class TelaPrincipalController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/Cenas/TelaCadastro.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
-        stage.setTitle("Formulário de Cadastro");
+        stage.setTitle("Formulário de Cadastro de Produtos");
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.getIcons().add(new Image("/icones/book.png"));

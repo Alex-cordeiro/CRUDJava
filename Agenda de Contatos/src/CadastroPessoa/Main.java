@@ -26,7 +26,7 @@ public static Stage stage;
         Image applicationIcon = new Image(getClass().getResourceAsStream("/icones/book.png"));
         stage.getIcons().add(applicationIcon);
         Scene scene = new Scene(root);
-        stage.setTitle("Sistema de Cadastro");
+        stage.setTitle("Cadastro de Produtos");
         stage.setScene(scene);
         stage.show();
       

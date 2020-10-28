@@ -5,7 +5,7 @@
  */
 package Controllers;
 
-import Database.ModuloConexao;
+import Database.ConnectionModule;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,20 +25,20 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
-import Models.Usuario;
+import Models.Products;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
-import Models.Usuario;
-import Database.PessoaDAO;
+import Models.Products;
+import Database.ProductDAO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * FXML Controller class
  *
- * @author Alexsander
+ * @author Luzia de Souza
  */
 public class TelaCadastroController implements Initializable {
 
@@ -51,23 +51,23 @@ public class TelaCadastroController implements Initializable {
     @FXML
     private TextField txtNome;
     @FXML
-    private TextField txtEndereco;
+    private TextField txtDescricao;
     @FXML
-    private TextField txtTelefone;
+    private TextField txtValor;
     @FXML
-    private TextField txtCpf;
+    private TextField txtCategoria;
     @FXML
-    private TableView<Usuario> tbUser;
+    private TableView<Products> tbUser;
     @FXML
-    private TableColumn<Usuario, Integer> clnCodigo;
+    private TableColumn<Products, Integer> clnCodigo;
     @FXML
-    private TableColumn<Usuario, String> clnNome;
+    private TableColumn<Products, String> clnNome;
     @FXML
-    private TableColumn<Usuario, String> clnEndereco;
+    private TableColumn<Products, String> clnDescricao;
     @FXML
-    private TableColumn<Usuario, String> clnTelefone;
+    private TableColumn<Products, String> clnValor;
     @FXML
-    private TableColumn<Usuario, String> clnCPF;
+    private TableColumn<Products, String> clnCategoria;
     @FXML
     private Button btnEditar;
     @FXML
@@ -83,7 +83,7 @@ public class TelaCadastroController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //adiciona a variavel de conexão ao banco de dados
-        conexao = ModuloConexao.conn();
+        conexao = ConnectionModule.conn();
         //tenta preencher a tabela
         try {
             PreencheTabela();
@@ -100,30 +100,30 @@ public class TelaCadastroController implements Initializable {
     //metodos dos botoes
     @FXML
     private void deletarUsuario(MouseEvent event) throws SQLException {
-        PessoaDAO pessoaDAO = new PessoaDAO();
-        Usuario usuarioSelecionado = tbUser.getSelectionModel().getSelectedItem();
-        pessoaDAO.deletaUser(usuarioSelecionado);
-        JOptionPane.showMessageDialog(null, "Usuario Apagado com Sucesso!");
+        ProductDAO productDAO = new ProductDAO();
+        Products productchosen = tbUser.getSelectionModel().getSelectedItem();
+        productDAO.deleteProducts(productchosen);
+        JOptionPane.showMessageDialog(null, "Produto Apagado com Sucesso!");
         limparCampos();
         PreencheTabela();
     }
 
     @FXML
     private void editaUsuario(MouseEvent event) throws SQLException {
-        Usuario usuarioSelecionado = tbUser.getSelectionModel().getSelectedItem();
-        PessoaDAO pessoaDAO = new PessoaDAO();
+        Products productchosen = tbUser.getSelectionModel().getSelectedItem();
+        ProductDAO productDAO = new ProductDAO();
         /*if(txtNome.getText().isEmpty() ||
-            txtEndereco.getText().isEmpty()||
-                txtTelefone.getText().isEmpty()||
-                txtCpf.getText().isEmpty()){
+            txtDescricao.getText().isEmpty()||
+                txtValor.getText().isEmpty()||
+                txtCategoria.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Existem campos sem informações!!");
         }else{*/
-        usuarioSelecionado.setCpf(txtCpf.getText());
-        usuarioSelecionado.setEndereco(txtEndereco.getText());
-        usuarioSelecionado.setNome(txtNome.getText());
-        usuarioSelecionado.setTelefone(txtTelefone.getText());
-        pessoaDAO.alteraUser(usuarioSelecionado);
-        JOptionPane.showMessageDialog(null, "Usuario Editado com Sucesso!");
+        productchosen.setCategory(txtCategoria.getText());
+        productchosen.setDescription(txtDescricao.getText());
+        productchosen.setName(txtNome.getText());
+        productchosen.setValue(txtValor.getText());
+        productDAO.alterProductsChangeProducts(productchosen);
+        JOptionPane.showMessageDialog(null, "Produto Editado com Sucesso!");
         limparCampos();
         PreencheTabela();
         /*}*/
@@ -132,16 +132,16 @@ public class TelaCadastroController implements Initializable {
 
     @FXML
     private void cadastraUsuario(MouseEvent event) throws SQLException {
-        PessoaDAO pessoaDAO = new PessoaDAO();
+        ProductDAO productDAO = new ProductDAO();
         if (txtNome.getText().isEmpty()
-                || txtEndereco.getText().isEmpty()
-                || txtTelefone.getText().isEmpty()
-                || txtCpf.getText().isEmpty()) {
+                || txtDescricao.getText().isEmpty()
+                || txtValor.getText().isEmpty()
+                || txtCategoria.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Existem campos sem informações!!");
 
         } else {
-            pessoaDAO.cadastraUser(new Usuario(txtNome.getText(), txtEndereco.getText(), txtTelefone.getText(), txtCpf.getText()));
-            System.out.println(txtNome.getText() + "," + txtEndereco.getText() + "," + txtTelefone.getText() + "," + txtCpf.getText());
+            productDAO.registerProducts(new Products(txtNome.getText(), txtDescricao.getText(), txtValor.getText(),txtCategoria.getText()));
+  /*linha de teste*/          System.out.println(txtNome.getText() + "," + txtDescricao.getText() + "," + txtValor.getText() + "," + txtCategoria.getText());
             limparCampos();
             PreencheTabela();
             JOptionPane.showMessageDialog(null, "Usuario inserido com sucesso!");
@@ -155,41 +155,41 @@ public class TelaCadastroController implements Initializable {
 
     public void PreencheTabela() throws SQLException {
 
-        ObservableList<Usuario> lista = getLista();
+        ObservableList<Products> lista = getList();
 
-        clnCodigo.setCellValueFactory(new PropertyValueFactory<Usuario, Integer>("codigo"));
-        clnNome.setCellValueFactory(new PropertyValueFactory<Usuario, String>("nome"));
-        clnEndereco.setCellValueFactory(new PropertyValueFactory<Usuario, String>("endereco"));
-        clnTelefone.setCellValueFactory(new PropertyValueFactory<Usuario, String>("telefone"));
-        clnCPF.setCellValueFactory(new PropertyValueFactory<Usuario, String>("cpf"));
+        clnCodigo.setCellValueFactory(new PropertyValueFactory<Products, Integer>("code"));
+        clnNome.setCellValueFactory(new PropertyValueFactory<Products, String>("name"));
+        clnDescricao.setCellValueFactory(new PropertyValueFactory<Products, String>("description"));
+        clnValor.setCellValueFactory(new PropertyValueFactory<Products, String>("value"));
+       clnCategoria.setCellValueFactory(new PropertyValueFactory<Products,String>("category"));
 
         tbUser.setItems(lista);
 
     }
 
-    private ObservableList<Usuario> getLista() throws SQLException {
-        PessoaDAO pessoaDAO = new PessoaDAO();
-        return pessoaDAO.listarUser();
+    private ObservableList<Products> getList() throws SQLException {
+        ProductDAO productDAO = new ProductDAO();
+        return productDAO.listProducts();
     }
 
     // exemplo de metodo para buscar o usuario e printar no console
-    public void selecionaItemTableView(Usuario usuario) {
+    public void selecionaItemTableView(Products product) {
         // System.out.println("Usuario selecionado:"+usuario.getNome());
-        if (usuario != null) {
-            txtNome.setText(usuario.getNome());
-            txtEndereco.setText(usuario.getEndereco());
-            txtTelefone.setText(usuario.getTelefone());
-            txtCpf.setText(usuario.getCpf());
+        if (product != null) {
+            txtNome.setText(product.getName());
+            txtDescricao.setText(product.getDescription());
+            txtValor.setText(product.getValue());
+            txtCategoria.setText(product.getCategory());
         }
     }
 
     
     private void limparCampos() {
         txtNome.clear();
-        txtEndereco.clear();
-        txtEndereco.clear();
-        txtTelefone.clear();
-        txtCpf.clear();
+        txtDescricao.clear();
+        txtDescricao.clear();
+        txtValor.clear();
+        txtCategoria.clear();
     }
 
   

@@ -24,7 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
-import Database.ModuloConexao;
+import Database.ConnectionModule;
 import javafx.scene.image.Image;
 
 /**
@@ -56,7 +56,7 @@ public class TelaloginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
-        conexao = ModuloConexao.conn();
+        conexao = ConnectionModule.conn();
     }    
 
     @FXML
