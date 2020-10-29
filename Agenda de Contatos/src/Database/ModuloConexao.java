@@ -19,9 +19,9 @@ public class ModuloConexao {
         String driver = "com.mysql.jdbc.Driver";
             
         //informações do banco de dados
-         String url = "jdbc:mysql://db4free.net:3306/cadastro_pessoa?autoReconect=true&useSSL=false";
-        String user = "mickelangelo";
-        String password = "G1ng1b1rr4";
+        String url = "jdbc:mysql://localhost:3306/Cad_Prod?autoReconect=true&useSSL=false";
+        String user = "root";
+        String password = "alexsander";
         //Estabelecendo a conexão com o banco
         
         try{

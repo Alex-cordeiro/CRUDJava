@@ -161,15 +161,15 @@ public class TelaCadastroController implements Initializable {
         clnNome.setCellValueFactory(new PropertyValueFactory<Products, String>("name"));
         clnDescricao.setCellValueFactory(new PropertyValueFactory<Products, String>("description"));
         clnValor.setCellValueFactory(new PropertyValueFactory<Products, String>("value"));
-       clnCategoria.setCellValueFactory(new PropertyValueFactory<Products,String>("category"));
+        clnCategoria.setCellValueFactory(new PropertyValueFactory<Products,String>("category"));
 
         tbUser.setItems(lista);
 
     }
 
     private ObservableList<Products> getList() throws SQLException {
-        ProductDAO productDAO = new ProductDAO();
-        return productDAO.listProducts();
+        ProductDAO product = new ProductDAO();
+        return product.listProducts();
     }
 
     // exemplo de metodo para buscar o usuario e printar no console

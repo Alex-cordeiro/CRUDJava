@@ -29,26 +29,26 @@
          </children>
       </HBox>
       <HBox layoutX="3.0" layoutY="402.0" prefHeight="50.0" prefWidth="657.0" style="-fx-background-color: #1E90FF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Label layoutX="21.0" layoutY="301.0" text="Endereço:">
+      <Label layoutX="21.0" layoutY="301.0" text="Descrição">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="22.0" layoutY="348.0" text="Telefone:">
+      <Label layoutX="22.0" layoutY="348.0" text="valor">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="317.0" layoutY="348.0" text="CPF:">
+      <Label layoutX="330.0" layoutY="348.0" text="categoria">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="txtNome" layoutX="87.0" layoutY="250.0" prefHeight="25.0" prefWidth="489.0" style="-fx-background-radius: 20;" />
-      <TextField fx:id="txtEndereco" layoutX="87.0" layoutY="297.0" prefHeight="25.0" prefWidth="489.0" style="-fx-background-radius: 20;" />
-      <TextField fx:id="txtTelefone" layoutX="87.0" layoutY="344.0" prefHeight="25.0" prefWidth="215.0" style="-fx-background-radius: 20;" />
-      <TextField fx:id="txtCpf" layoutX="348.0" layoutY="344.0" prefHeight="25.0" prefWidth="228.0" style="-fx-background-radius: 20;" />
-      <Label layoutX="22.0" layoutY="254.0" text="Nome:">
+      <TextField fx:id="txtName" layoutX="87.0" layoutY="250.0" prefHeight="25.0" prefWidth="489.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="textDescription" layoutX="87.0" layoutY="297.0" prefHeight="25.0" prefWidth="489.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="txtValue" layoutX="87.0" layoutY="344.0" prefHeight="25.0" prefWidth="215.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="textCategory" layoutX="408.0" layoutY="344.0" prefHeight="25.0" prefWidth="228.0" style="-fx-background-radius: 20;" />
+      <Label layoutX="22.0" layoutY="254.0" text="Nome">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -57,9 +57,9 @@
          <columns>
             <TableColumn fx:id="clnCodigo" prefWidth="120.0" text="Codigo" />
             <TableColumn fx:id="clnNome" prefWidth="136.0" text="Nome" />
-            <TableColumn fx:id="clnEndereco" prefWidth="149.0" text="Endereço" />
-            <TableColumn fx:id="clnTelefone" prefWidth="128.0" text="Telefone" />
-            <TableColumn fx:id="clnCPF" minWidth="7.0" prefWidth="146.0" text="CPF" />
+            <TableColumn fx:id="clnDescription" prefWidth="149.0" text="Descrição" />
+            <TableColumn fx:id="clnValue" prefWidth="128.0" text="Valor" />
+            <TableColumn fx:id="clnCategoria" minWidth="7.0" prefWidth="146.0" text="Categoria" />
          </columns></TableView>
       <Button fx:id="btnEditar" layoutX="430.0" layoutY="384.0" mnemonicParsing="false" onMouseClicked="#editaUsuario" prefHeight="50.0" prefWidth="135.0" style="-fx-background-color: lightgray;" text="Editar">
          <font>

@@ -21,16 +21,10 @@ public static Stage stage;
     @Override
     public void start(Stage stage) throws Exception {
        
-        Parent root = FXMLLoader.load(getClass().getResource("/Cenas/TelaCadastro.fxml"));
-        
-        Image applicationIcon = new Image(getClass().getResourceAsStream("/icones/book.png"));
-        stage.getIcons().add(applicationIcon);
-        Scene scene = new Scene(root);
-        stage.setTitle("Cadastro de Produtos");
-        stage.setScene(scene);
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/Cenas/TelaCadastro.fxml"));
+        Parent root = loader.load();
+        stage.setScene(new Scene(root));
         stage.show();
-      
-        
     }
     
     public static Stage getStage(){
